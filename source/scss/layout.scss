@@ -1,9 +1,15 @@
 @use 'sass:map';
 @use 'sass:math';
 @use '_config.scss' as *;
-
 // main Bootstrap Module
 @use 'config/_init-bootstrap.scss';
+@use './components/_header.scss' as *;
+@use './components/_footer.scss' as *;
+@use './components/sidemenubox/_sideMenuBox.scss' as *;
+//@use './config/_reset.scss' as *;
+
+@use './components/ui/_social-media.scss' as *;
+@import "~mouse-follower/dist/mouse-follower.min.css";
 
 
 // |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾| //
@@ -69,4 +75,53 @@
     right: 0;
     bottom: 0;
     background: red;
+}
+
+
+@supports (mix-blend-mode: exclusion) {
+    .mf-cursor.-exclusion,
+    .mf-cursor.-opaque {
+        mix-blend-mode: exclusion;
+    }
+    .mf-cursor.-exclusion:before,
+    .mf-cursor.-opaque:before {
+        background: #fff;
+    }
+}
+.mf-cursor.-pointer:before {
+    transform: scale(0.15);
+}
+.mf-cursor.-pointer.-active:before,
+.cb-menu.-open .cb-menu-toggle button.mf-cursor.-pointer:before {
+    transform: scale(0.1);
+}
+.mf-cursor.-opaque:before {
+    transform: scale(1.32);
+}
+.mf-cursor.-opaque.-active:before,
+.cb-menu.-open .cb-menu-toggle button.mf-cursor.-opaque:before {
+    transform: scale(1.2);
+}
+
+.mf-cursor.-menu:before {
+    transform: scale(1.32);
+}
+.mf-cursor.-menu.-active:before,
+.cb-menu.-open .cb-menu-toggle button.mf-cursor.-menu:before {
+    transform: scale(1.2);
+}
+
+.mf-cursor.-inverse.-open{
+    color: #000;
+}
+
+.mf-cursor.-inverse .mf-cursor-text{
+    color: #000;
+} 
+
+.mf-cursor.-pointer.-text{
+    &::before{
+        transform: scale(1.7);
+        opacity: 1;
+    }
 }

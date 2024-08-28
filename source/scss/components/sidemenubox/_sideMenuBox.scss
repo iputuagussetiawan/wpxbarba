@@ -1,0 +1,155 @@
+@use "./_burger-button.scss" as *;
+@use "./_side-menu.scss" as *;
+@use "./_side-mail.scss" as *;
+
+.menu-box {
+    display: none;
+    &__backdrop{
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 197;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    &__fill{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 199;
+        height: 100vh;
+        transform-origin: right center;
+        background: #fff;
+    }
+
+    &__content{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 200;
+        height: 100vh;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 100px 0 90px 0;
+    }
+
+    &__container{
+        width: 100%;
+        padding: 0 30px 0 45px;
+    }
+
+    &__col.-left {
+        display: none;
+    }
+
+    &__title {
+        display: none;
+        padding: 0 0 30px 0;
+        color: rgba(0, 0, 0, 0.3);
+        font-size: 16px;
+        line-height: 100%;
+    }
+
+    &__title.-sm {
+        padding: 0 0 12px 0;
+    }
+
+  
+    @media (min-width: 768px), (orientation: landscape) {
+        &__fill{
+            width: 689px;
+            left: auto;
+        }
+        &__content {
+            width: 689px;
+            left: auto;
+        }
+
+        &__container {
+            padding: 0 98px;
+        }
+    }
+    @media (min-width: 768px) and (min-height: 550px) {
+        &__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px 0 0 0;
+        }
+
+        &__body {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        &__footer {
+            padding: 0 0 50px 0;
+        }
+
+        &__grid {
+            display: flex;
+            width: 100%;
+        }
+
+        &__col {
+            flex: 1.2;
+        }
+
+        &__col.-left {
+            display: block;
+            flex: 0.8;
+        }
+    }
+    @media (min-height: 550px) {
+        &__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0;
+        }
+        &__title {
+            display: block;
+        }
+    }
+    @media (min-width: 768px) and (min-height: 600px) {
+        &__content {
+            padding: 40px 0 0 0;
+        }
+    }
+    @media (min-width: 1600px) and (min-height: 700px) {
+        &__fill{
+            width: 880px;
+        }
+        &__content {
+            width: 880px;
+            padding: 50px 0 0 0;
+        }
+        &__footer {
+            padding: 0 0 84px 0;
+        }
+
+        &__title {
+            padding: 0 0 50px 0;
+        }
+
+        &__title.-sm {
+            padding: 0 0 20px 0;
+        }
+
+
+    }
+}
+
+
+
+.cb-menu-nav.-active a:before,
+.cb-menu.-open .cb-menu-toggle button.cb-menu-nav a:before {
+    transform: scaleX(1);
+    transform-origin: left center;
+}
