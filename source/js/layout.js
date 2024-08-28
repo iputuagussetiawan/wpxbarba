@@ -38,10 +38,14 @@ barba.init({
             document.body.setAttribute('class', bodyClasses);
             routes.init();
             loader.hideLoader();
-            // let cbMenuBarba=document.querySelector(".cb-menu")
-            // const navbarBarba=new Navbar(cbMenuBarba);
-            navbar.onInit()
-            navbar.bindToggle()
+            const mfCursorElements = document.querySelectorAll('.mf-cursor');
+            // Loop through each element and remove it from the DOM
+            mfCursorElements.forEach(element => {
+                element.remove();
+            });
+            let cbMenuBarba=document.querySelector(".cb-menu")
+            const navbarBarba=new Navbar(cbMenuBarba);
+            navbarBarba.onInit()
         }
     }]
 });
@@ -53,3 +57,4 @@ loader.hideLoader()
 
 
 //5.FUNCTION
+

@@ -7,8 +7,7 @@ gsap.registerPlugin(ScrollTrigger)
 import MouseFollower from "mouse-follower";
 MouseFollower.registerGSAP(gsap);
 class Navbar {
-    constructor(el) {
-        this.el = el;
+    constructor() {
         this.opened = false;
         this.toggleBtn = document.querySelector(".burger-menu__button");
         this.menu=document.querySelector(".cb-menu")
@@ -23,11 +22,15 @@ class Navbar {
             skewing: 1.5,
             skewingText: 2,
             skewingIcon: 2,
-            skewingMedia: 2,
+            skewingMedia: 2,                                
             skewingDelta: 0.001,
             skewingDeltaMax: 0.15,
             stickDelta: 0.15,
         });
+    }
+
+    destroyCursor(){
+        this.cursor.destroy();
     }
     onInit() {
         try {
@@ -53,8 +56,8 @@ class Navbar {
         this.tlClose.eventCallback("onComplete", () => {
             this.box.classList.remove("-visible");
         });
-        this.el.addEventListener("mouseenter", () => {
-            if (this.el.classList.contains("-inverse") && this.cursor) {
+        this.menu.addEventListener("mouseenter", () => {
+            if (this.menu.classList.contains("-inverse") && this.cursor) {
                 this.cursor.addState("-inverse");
             }
         });
@@ -72,7 +75,6 @@ class Navbar {
     menuLinkClick(){
         this.menuLinks.forEach(link => {
             link.addEventListener('click', (event) => {
-                //console.log('testes main menu')
                 this.hide();
             });
         });
@@ -117,7 +119,7 @@ class Navbar {
                 trigger: e,
                 start: "top top+=50px",
                 end: "bottom top+=70px",
-                toggleClass: { targets: this.el, className: "-inverse" },
+                toggleClass: { targets: this.menu, className: "-inverse" },
                 refreshPriority: -99999
             });
         });
