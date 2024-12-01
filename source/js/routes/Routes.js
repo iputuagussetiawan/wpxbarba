@@ -1,4 +1,4 @@
-import Home from "../pages/home";
+import Home from "../pages/PageHome";
 import About from "../pages/About";
 
 const home=new Home();
